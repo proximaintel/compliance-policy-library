@@ -1,0 +1,37 @@
+{
+  "properties": {
+    "displayName": "Require Microsoft Defender for Cloud on all subscriptions",
+    "description": "FedRAMP SI-4 - Information system monitoring. Defender for Cloud must be enabled with all plans active.",
+    "mode": "All",
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Security/pricings"
+          },
+          {
+            "field": "Microsoft.Security/pricings/pricingTier",
+            "notEquals": "Standard"
+          }
+        ]
+      },
+      "then": {
+        "effect": "[parameters('effect')]"
+      }
+    },
+    "parameters": {
+      "effect": {
+        "type": "String",
+        "allowedValues": ["Audit", "Disabled"],
+        "defaultValue": "Audit"
+      }
+    },
+    "metadata": {
+      "category": "Security Center",
+      "complianceFramework": "FedRAMP Moderate",
+      "controlId": "SI-4",
+      "severity": "High"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+[
+  {"policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/require-network-segmentation", "policyDefinitionReferenceId": "requireNetworkSegmentation", "parameters": {}},
+  {"policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/require-encryption-in-transit", "policyDefinitionReferenceId": "requireEncryptionInTransit", "parameters": {}},
+  {"policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/require-key-rotation", "policyDefinitionReferenceId": "requireKeyRotation", "parameters": {}},
+  {"policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/deny-public-ip-on-vms", "policyDefinitionReferenceId": "denyPublicIpOnVms", "parameters": {}},
+  {"policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/require-log-retention-365", "policyDefinitionReferenceId": "requireLogRetention365", "parameters": {}}
+]

@@ -1,0 +1,10 @@
+{
+  "name": "Compliance Posture Overview",
+  "description": "Workbook showing policy compliance status, Defender Secure Score, and recent violations across the Azure estate.",
+  "sections": [
+    {"title": "Policy Compliance Summary", "query": "PolicyResources | where type == 'microsoft.policyinsights/policystates' | summarize count() by complianceState"},
+    {"title": "Secure Score Trend", "query": "SecureScores | summarize avg(Score) by bin(TimeGenerated, 1d)"},
+    {"title": "Recent Violations", "query": "AzureActivity | where Properties has 'RequestDisallowedByPolicy' | top 50 by TimeGenerated"},
+    {"title": "Non-Compliant Resources", "query": "PolicyResources | where type == 'microsoft.policyinsights/policystates' | where complianceState == 'NonCompliant' | summarize count() by resourceType"}
+  ]
+}

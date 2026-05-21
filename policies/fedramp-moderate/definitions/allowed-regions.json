@@ -1,0 +1,40 @@
+{
+  "properties": {
+    "displayName": "Restrict resource deployment to allowed regions",
+    "description": "FedRAMP SC-7/PE-18 - Boundary protection and data residency. Resources may only be deployed to approved Azure regions.",
+    "mode": "All",
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "field": "location",
+            "notIn": "[parameters('allowedRegions')]"
+          },
+          {
+            "field": "location",
+            "notEquals": "global"
+          }
+        ]
+      },
+      "then": {
+        "effect": "Deny"
+      }
+    },
+    "parameters": {
+      "allowedRegions": {
+        "type": "Array",
+        "metadata": {
+          "displayName": "Allowed Regions",
+          "description": "List of Azure regions where resources can be deployed"
+        },
+        "defaultValue": ["eastus", "eastus2", "westus2", "usgovvirginia", "usgovarizona"]
+      }
+    },
+    "metadata": {
+      "category": "General",
+      "complianceFramework": "FedRAMP Moderate",
+      "controlId": "SC-7, PE-18",
+      "severity": "High"
+    }
+  }
+}

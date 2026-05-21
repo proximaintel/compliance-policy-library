@@ -1,0 +1,13 @@
+name: Validate Policies
+on: [pull_request]
+jobs:
+  validate-json:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install jsonlint
+        run: npm install -g jsonlint
+      - name: Validate policy definitions
+        run: find policies -name "*.json" -exec jsonlint -q {} \;
+      - name: Validate sentinel rules
+        run: find sentinel -name "*.json" -exec jsonlint -q {} \;

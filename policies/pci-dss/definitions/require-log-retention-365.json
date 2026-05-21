@@ -1,0 +1,18 @@
+{
+  "properties": {
+    "displayName": "Require 365-day log retention on Log Analytics",
+    "description": "PCI DSS Req 10 - Log and monitor all access. Log Analytics workspaces must retain logs for at least 365 days.",
+    "mode": "All",
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {"field": "type", "equals": "Microsoft.OperationalInsights/workspaces"},
+          {"field": "Microsoft.OperationalInsights/workspaces/retentionInDays", "less": 365}
+        ]
+      },
+      "then": {"effect": "[parameters('effect')]"}
+    },
+    "parameters": {"effect": {"type": "String", "allowedValues": ["Audit", "Deny", "Disabled"], "defaultValue": "Audit"}},
+    "metadata": {"category": "Monitoring", "complianceFramework": "PCI DSS v4.0", "controlId": "Requirement 10", "severity": "High"}
+  }
+}

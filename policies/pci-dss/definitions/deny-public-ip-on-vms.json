@@ -1,0 +1,18 @@
+{
+  "properties": {
+    "displayName": "Deny public IP addresses on virtual machines",
+    "description": "PCI DSS Req 1 - Network security. VMs in CDE must not have public IP addresses directly attached.",
+    "mode": "All",
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {"field": "type", "equals": "Microsoft.Network/networkInterfaces"},
+          {"field": "Microsoft.Network/networkInterfaces/ipconfigurations[*].publicIpAddress.id", "exists": true}
+        ]
+      },
+      "then": {"effect": "Deny"}
+    },
+    "parameters": {},
+    "metadata": {"category": "Network", "complianceFramework": "PCI DSS v4.0", "controlId": "Requirement 1", "severity": "Critical"}
+  }
+}

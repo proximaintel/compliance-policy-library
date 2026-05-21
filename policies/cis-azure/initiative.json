@@ -1,0 +1,7 @@
+[
+  {"policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/require-secure-transfer", "policyDefinitionReferenceId": "requireSecureTransfer", "parameters": {}},
+  {"policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/deny-rdp-from-internet", "policyDefinitionReferenceId": "denyRdpFromInternet", "parameters": {}},
+  {"policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/require-disk-encryption", "policyDefinitionReferenceId": "requireDiskEncryption", "parameters": {}},
+  {"policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/require-network-watcher", "policyDefinitionReferenceId": "requireNetworkWatcher", "parameters": {}},
+  {"policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/deny-unrestricted-sql-access", "policyDefinitionReferenceId": "denyUnrestrictedSqlAccess", "parameters": {}}
+]

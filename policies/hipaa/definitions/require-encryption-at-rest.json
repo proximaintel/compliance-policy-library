@@ -1,0 +1,41 @@
+{
+  "properties": {
+    "displayName": "Require encryption at rest for storage accounts",
+    "description": "HIPAA §164.312(a)(2)(iv) - Storage accounts must use encryption at rest. Audits storage accounts that do not have infrastructure encryption enabled.",
+    "mode": "All",
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Storage/storageAccounts"
+          },
+          {
+            "field": "Microsoft.Storage/storageAccounts/encryption.requireInfrastructureEncryption",
+            "notEquals": true
+          }
+        ]
+      },
+      "then": {
+        "effect": "[parameters('effect')]"
+      }
+    },
+    "parameters": {
+      "effect": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Effect",
+          "description": "The effect to apply when the policy is violated"
+        },
+        "allowedValues": ["Audit", "Deny", "Disabled"],
+        "defaultValue": "Audit"
+      }
+    },
+    "metadata": {
+      "category": "Storage",
+      "complianceFramework": "HIPAA",
+      "controlId": "§164.312(a)(2)(iv)",
+      "severity": "High"
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "properties": {
+    "displayName": "Require key rotation policy on Key Vault keys",
+    "description": "PCI DSS Req 3 - Protect stored account data. Cryptographic keys must have a rotation policy configured.",
+    "mode": "All",
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {"field": "type", "equals": "Microsoft.KeyVault/vaults/keys"},
+          {"field": "Microsoft.KeyVault/vaults/keys/rotationPolicy", "exists": false}
+        ]
+      },
+      "then": {"effect": "[parameters('effect')]"}
+    },
+    "parameters": {"effect": {"type": "String", "allowedValues": ["Audit", "Disabled"], "defaultValue": "Audit"}},
+    "metadata": {"category": "Key Vault", "complianceFramework": "PCI DSS v4.0", "controlId": "Requirement 3", "severity": "Medium"}
+  }
+}

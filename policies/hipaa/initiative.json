@@ -1,0 +1,27 @@
+[
+  {
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/require-encryption-at-rest",
+    "policyDefinitionReferenceId": "requireEncryptionAtRest",
+    "parameters": {}
+  },
+  {
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/require-tls-12",
+    "policyDefinitionReferenceId": "requireTls12",
+    "parameters": {}
+  },
+  {
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/require-audit-logging",
+    "policyDefinitionReferenceId": "requireAuditLogging",
+    "parameters": {}
+  },
+  {
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/deny-public-storage",
+    "policyDefinitionReferenceId": "denyPublicStorage",
+    "parameters": {}
+  },
+  {
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/require-private-endpoints",
+    "policyDefinitionReferenceId": "requirePrivateEndpoints",
+    "parameters": {}
+  }
+]

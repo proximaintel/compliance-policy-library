@@ -1,0 +1,31 @@
+{
+  "properties": {
+    "displayName": "Deny unapproved resource types",
+    "description": "FedRAMP CM-7 - Least functionality. Only approved Azure resource types may be deployed.",
+    "mode": "All",
+    "policyRule": {
+      "if": {
+        "field": "type",
+        "notIn": "[parameters('allowedResourceTypes')]"
+      },
+      "then": {
+        "effect": "Deny"
+      }
+    },
+    "parameters": {
+      "allowedResourceTypes": {
+        "type": "Array",
+        "metadata": {
+          "displayName": "Allowed Resource Types",
+          "description": "List of approved Azure resource types"
+        }
+      }
+    },
+    "metadata": {
+      "category": "General",
+      "complianceFramework": "FedRAMP Moderate",
+      "controlId": "CM-7",
+      "severity": "Medium"
+    }
+  }
+}

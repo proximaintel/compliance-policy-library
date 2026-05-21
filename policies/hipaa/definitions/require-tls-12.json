@@ -1,0 +1,31 @@
+{
+  "properties": {
+    "displayName": "Require TLS 1.2 minimum for storage accounts",
+    "description": "HIPAA §164.312(e)(1) - Transmission security. Storage accounts must enforce TLS 1.2 as the minimum version for all requests.",
+    "mode": "All",
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Storage/storageAccounts"
+          },
+          {
+            "field": "Microsoft.Storage/storageAccounts/minimumTlsVersion",
+            "notEquals": "TLS1_2"
+          }
+        ]
+      },
+      "then": {
+        "effect": "Deny"
+      }
+    },
+    "parameters": {},
+    "metadata": {
+      "category": "Storage",
+      "complianceFramework": "HIPAA",
+      "controlId": "§164.312(e)(1)",
+      "severity": "High"
+    }
+  }
+}

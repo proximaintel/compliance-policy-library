@@ -1,0 +1,7 @@
+[
+  {"policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/require-mfa", "policyDefinitionReferenceId": "requireMfa", "parameters": {}},
+  {"policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/require-cmk-encryption", "policyDefinitionReferenceId": "requireCmkEncryption", "parameters": {}},
+  {"policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/deny-classic-resources", "policyDefinitionReferenceId": "denyClassicResources", "parameters": {}},
+  {"policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/require-vulnerability-assessment", "policyDefinitionReferenceId": "requireVulnAssessment", "parameters": {}},
+  {"policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/require-backup", "policyDefinitionReferenceId": "requireBackup", "parameters": {}}
+]

@@ -1,0 +1,41 @@
+{
+  "properties": {
+    "displayName": "Require private endpoints for PaaS services",
+    "description": "HIPAA §164.312(e)(1) - Transmission security. PaaS services must be accessible only through private endpoints, not public internet.",
+    "mode": "All",
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Storage/storageAccounts"
+          },
+          {
+            "field": "Microsoft.Storage/storageAccounts/networkAcls.defaultAction",
+            "notEquals": "Deny"
+          }
+        ]
+      },
+      "then": {
+        "effect": "[parameters('effect')]"
+      }
+    },
+    "parameters": {
+      "effect": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Effect",
+          "description": "The effect to apply"
+        },
+        "allowedValues": ["Audit", "Deny", "Disabled"],
+        "defaultValue": "Audit"
+      }
+    },
+    "metadata": {
+      "category": "Network",
+      "complianceFramework": "HIPAA",
+      "controlId": "§164.312(e)(1)",
+      "severity": "High"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "properties": {
+    "displayName": "Require soft delete on Key Vaults",
+    "description": "FedRAMP CP-9 - Information system backup. Key Vaults must have soft delete enabled to prevent accidental or malicious key destruction.",
+    "mode": "All",
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.KeyVault/vaults"
+          },
+          {
+            "field": "Microsoft.KeyVault/vaults/enableSoftDelete",
+            "notEquals": true
+          }
+        ]
+      },
+      "then": {
+        "effect": "Deny"
+      }
+    },
+    "parameters": {},
+    "metadata": {
+      "category": "Key Vault",
+      "complianceFramework": "FedRAMP Moderate",
+      "controlId": "CP-9",
+      "severity": "High"
+    }
+  }
+}

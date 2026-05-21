@@ -1,0 +1,55 @@
+{
+  "properties": {
+    "displayName": "Require diagnostic settings for audit logging",
+    "description": "HIPAA §164.312(b) - Audit controls. Resources must have diagnostic settings configured to send logs to a Log Analytics workspace.",
+    "mode": "All",
+    "policyRule": {
+      "if": {
+        "field": "type",
+        "equals": "Microsoft.Storage/storageAccounts"
+      },
+      "then": {
+        "effect": "DeployIfNotExists",
+        "details": {
+          "type": "Microsoft.Insights/diagnosticSettings",
+          "existenceCondition": {
+            "allOf": [
+              {
+                "field": "Microsoft.Insights/diagnosticSettings/logs.enabled",
+                "equals": true
+              }
+            ]
+          },
+          "roleDefinitionIds": [
+            "/providers/Microsoft.Authorization/roleDefinitions/749f88d5-cbae-40b8-bcfc-e573ddc772fa"
+          ],
+          "deployment": {
+            "properties": {
+              "mode": "incremental",
+              "parameters": {
+                "logAnalyticsWorkspaceId": {
+                  "value": "[parameters('logAnalyticsWorkspaceId')]"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "parameters": {
+      "logAnalyticsWorkspaceId": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Log Analytics Workspace ID",
+          "description": "The resource ID of the Log Analytics workspace for diagnostic logs"
+        }
+      }
+    },
+    "metadata": {
+      "category": "Monitoring",
+      "complianceFramework": "HIPAA",
+      "controlId": "§164.312(b)",
+      "severity": "High"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "properties": {
+    "displayName": "Deny public access on storage accounts",
+    "description": "HIPAA §164.312(e)(1) - Transmission security. Storage accounts must not allow public blob access.",
+    "mode": "All",
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Storage/storageAccounts"
+          },
+          {
+            "field": "Microsoft.Storage/storageAccounts/allowBlobPublicAccess",
+            "equals": true
+          }
+        ]
+      },
+      "then": {
+        "effect": "Deny"
+      }
+    },
+    "parameters": {},
+    "metadata": {
+      "category": "Storage",
+      "complianceFramework": "HIPAA",
+      "controlId": "§164.312(e)(1)",
+      "severity": "Critical"
+    }
+  }
+}

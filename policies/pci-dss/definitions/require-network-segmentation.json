@@ -1,0 +1,18 @@
+{
+  "properties": {
+    "displayName": "Require network segmentation for CDE",
+    "description": "PCI DSS Req 1 - Network security controls. VNets containing cardholder data must have NSGs restricting traffic to authorized flows only.",
+    "mode": "All",
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {"field": "type", "equals": "Microsoft.Network/virtualNetworks/subnets"},
+          {"field": "Microsoft.Network/virtualNetworks/subnets/networkSecurityGroup.id", "exists": false}
+        ]
+      },
+      "then": {"effect": "[parameters('effect')]"}
+    },
+    "parameters": {"effect": {"type": "String", "allowedValues": ["Audit", "Deny", "Disabled"], "defaultValue": "Audit"}},
+    "metadata": {"category": "Network", "complianceFramework": "PCI DSS v4.0", "controlId": "Requirement 1", "severity": "High"}
+  }
+}

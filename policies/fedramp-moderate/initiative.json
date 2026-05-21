@@ -1,0 +1,27 @@
+[
+  {
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/allowed-regions",
+    "policyDefinitionReferenceId": "allowedRegions",
+    "parameters": {}
+  },
+  {
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/require-nsg-on-subnets",
+    "policyDefinitionReferenceId": "requireNsgOnSubnets",
+    "parameters": {}
+  },
+  {
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/deny-unapproved-resource-types",
+    "policyDefinitionReferenceId": "denyUnapprovedResourceTypes",
+    "parameters": {}
+  },
+  {
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/require-defender-for-cloud",
+    "policyDefinitionReferenceId": "requireDefenderForCloud",
+    "parameters": {}
+  },
+  {
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/require-key-vault-soft-delete",
+    "policyDefinitionReferenceId": "requireKeyVaultSoftDelete",
+    "parameters": {}
+  }
+]

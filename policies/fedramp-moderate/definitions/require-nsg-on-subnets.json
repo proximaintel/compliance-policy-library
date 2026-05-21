@@ -1,0 +1,37 @@
+{
+  "properties": {
+    "displayName": "Require NSG on all subnets",
+    "description": "FedRAMP SC-7 - Boundary protection. All subnets must have a Network Security Group associated.",
+    "mode": "All",
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Network/virtualNetworks/subnets"
+          },
+          {
+            "field": "Microsoft.Network/virtualNetworks/subnets/networkSecurityGroup.id",
+            "exists": false
+          }
+        ]
+      },
+      "then": {
+        "effect": "[parameters('effect')]"
+      }
+    },
+    "parameters": {
+      "effect": {
+        "type": "String",
+        "allowedValues": ["Audit", "Deny", "Disabled"],
+        "defaultValue": "Audit"
+      }
+    },
+    "metadata": {
+      "category": "Network",
+      "complianceFramework": "FedRAMP Moderate",
+      "controlId": "SC-7",
+      "severity": "High"
+    }
+  }
+}
